@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Resources\ProdutoResource;
 use App\Models\Produto;
-use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
@@ -13,7 +13,7 @@ class ProdutoController extends Controller
      */
     public function listar()
     {
-        return ProdutoResource::collection(Produto::al());
+        return ProdutoResource::collection(Produto::all());
     }
 
     /**

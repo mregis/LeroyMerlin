@@ -13,16 +13,14 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('auth:api')->get('/user', 'Api\UserController@auth')->name('api.user.auth');
 
 Route::prefix('/produtos')->group(function () {
-    Route::get('/', 'ProdutoController@listar')->name('produto.listar');
-    Route::get('/{id}', 'ProdutoController@encontrar')->name('produto.encontrar');
+    Route::get('/', 'Api\ProdutoController@listar')->name('api.produto.listar');
+    Route::get('/{id}', 'Api\ProdutoController@encontrar')->name('api.produto.encontrar');
 
 });
-Route::prefix('/categorias')->group(function () {
-    Route::get('/', 'CategoriaController@listar')->name('categoria.listar');
+    Route::prefix('/categorias')->group(function () {
+    Route::get('/', 'Api\CategoriaController@listar')->name('api.categoria.listar');
 });
 
